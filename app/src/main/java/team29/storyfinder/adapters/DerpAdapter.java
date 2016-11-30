@@ -21,6 +21,17 @@ public class DerpAdapter extends RecyclerView.Adapter<DerpAdapter.DerpHolder> {
     private List<listItem> listData;
     private LayoutInflater inflater;
 
+    private ItemClickCallback itemClickCallback;
+
+    public interface ItemClickCallback {
+        void onItemClick(int p);
+
+    }
+
+    public void setItemClickCallback(final ItemClickCallback itemClickCallback) {
+        this.itemClickCallback = itemClickCallback;
+    }
+
     public DerpAdapter(List<listItem> listData, Context c){
         inflater = LayoutInflater.from(c);
         this.listData = listData;
@@ -45,19 +56,29 @@ public class DerpAdapter extends RecyclerView.Adapter<DerpAdapter.DerpHolder> {
         return listData.size();
     }
 
-    class DerpHolder extends RecyclerView.ViewHolder {
+    class DerpHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView title;
         private ImageView icon;
         private View container;
+        private TextView description;
 
         public DerpHolder(View itemView) {
             super(itemView);
 
             title = (TextView)itemView.findViewById(R.id.lbl_item_text);
             icon = (ImageView)itemView.findViewById(R.id.im_item_icon);
-            //We'll need the container later on, when we add an View.OnClickListener
+            description = (TextView)itemView.findViewById(R.id.lbl_item_description);
             container = itemView.findViewById(R.id.cont_item_root);
+            container.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.cont_item_root){
+                itemClickCallback.onItemClick(getAdapterPosition());
+            }
         }
     }
 
