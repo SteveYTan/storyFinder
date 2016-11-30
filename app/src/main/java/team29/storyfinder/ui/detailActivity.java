@@ -2,6 +2,7 @@ package team29.storyfinder.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.TextView;
 import team29.storyfinder.R;
 
@@ -24,5 +25,6 @@ public class detailActivity extends AppCompatActivity {
 
         ((TextView)findViewById(R.id.lbl_quote_text)).setText(extras.getString(EXTRA_QUOTE));
         ((TextView)findViewById(R.id.lbl_quote_attribution)).setText(extras.getString(EXTRA_ATTR));
+
     }
 }

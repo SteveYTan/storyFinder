@@ -8,7 +8,6 @@
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context="team29.storyfinder.ui.detailActivity">
-
     <TextView
         android:id="@+id/lbl_quote_text"
         android:layout_width="match_parent"
@@ -24,5 +23,9 @@
         android:layout_marginTop="50dp"
         android:layout_below="@+id/lbl_quote_text"
         android:layout_alignParentStart="true"/>
-
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/lbl_image_attribution"
+        />
 </RelativeLayout>
